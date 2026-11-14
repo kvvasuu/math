@@ -108,6 +108,8 @@ import { vec2 } from 'math';
 - `vec2.cross(out: Vec3, a: Vec2, b: Vec2): Vec3` — Computes the cross product of two vec2's
 - `vec2.lerp(out: Vec2, a: Vec2, b: Vec2, t: number): Vec2` — Performs a linear interpolation between two vec2's
 - `vec2.lagrange(out: Vec2, a: Vec2, b: Vec2, c: Vec2, t: number): Vec2` — Quadratic interpolation through three vectors using Lagrange interpolation.
+- `vec2.hermite(out: Vec2, a: Vec2, b: Vec2, c: Vec2, d: Vec2, t: number): Vec2` — Performs a hermite interpolation with two control points
+- `vec2.bezier(out: Vec2, a: Vec2, b: Vec2, c: Vec2, d: Vec2, t: number): Vec2` — Performs a bezier interpolation with two control points
 - `vec2.signedAngle(a: Vec2, b: Vec2): number` — Get the signed angle from `a` to `b`, in the range (-PI, PI].
 
 **Transform**
@@ -754,6 +756,7 @@ import { polar } from 'math';
 
 - `type Box2 = [ minX: number, minY: number, maxX: number, maxY: number ]` — An axis-aligned box in 2D space, as [minX, minY, maxX, maxY]
 - `type Box3 = [ minX: number, minY: number, minZ: number, maxX: number, maxY: number, maxZ: number ]` — A box in 3D space
+- `type Box3Corners = [ Vec3, Vec3, Vec3, Vec3, Vec3, Vec3, Vec3, Vec3 ]` — The eight corners of a box, as returned by corners.
 - `type OBB3 = { center: Vec3; halfExtents: Vec3; rotation: Mat3; }` — An oriented bounding box in 3D space
 - `type Plane3 = { normal: Vec3; constant: number; }` — A plane in 3D space
 - `type Sphere = { center: Vec3; radius: number; }` — A sphere in 3D space
@@ -823,6 +826,7 @@ import { box3 } from 'math/shapes';
 
 - `box3.min(out: Vec3, box: Box3): Vec3` — Extracts the minimum corner of a Box3
 - `box3.max(out: Vec3, box: Box3): Vec3` — Extracts the maximum corner of a Box3
+- `box3.corners(out: Box3Corners, box: Box3): Box3Corners` — Computes the eight corners of a Box3.
 - `box3.empty(out: Box3): Box3` — Set a Box3 to empty (min to positive infinity, max to negative infinity)
 - `box3.expandByPoint(out: Box3, box: Box3, point: Vec3): Box3` — Expands a Box3 to include a point
 - `box3.expandByExtents(out: Box3, box: Box3, vector: Vec3): Box3` — Widens a Box3 by a vector on both sides
